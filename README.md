@@ -7,6 +7,9 @@ My work as an apprentice is to develop an inventory management software taking i
 
 It is a very good and big project
 
+
+Sorry for the French words used in the project, it is for me helped because the software will be in french
+
 # Begin
 
 I begin the visual part in order to give an overview of the application to the loan of my chief.
