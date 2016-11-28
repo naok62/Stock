@@ -1,0 +1,14 @@
+c:\users\jacques\documents\visual studio 2015\Projects\GestionStock\GestionStock\bin\Debug\GestionStock.exe.config
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\bin\Debug\GestionStock.exe
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\bin\Debug\GestionStock.pdb
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\GestionStock.csprojResolveAssemblyReference.cache
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\MainWindow.g.cs
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\App.g.cs
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\GestionStock_MarkupCompile.cache
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\GestionStock_MarkupCompile.lref
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\MainWindow.baml
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\GestionStock.g.resources
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\GestionStock.Properties.Resources.resources
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\GestionStock.csproj.GenerateResource.Cache
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\GestionStock.exe
+C:\Users\JACQUES\Documents\Visual Studio 2015\Projects\GestionStock\GestionStock\obj\Debug\GestionStock.pdb

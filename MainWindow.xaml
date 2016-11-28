@@ -1,0 +1,275 @@
+﻿<Window x:Class="GestionStock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionStock"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}"
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}"
+        WindowStartupLocation="CenterScreen">
+
+    <!-- Ressources -->
+    <Window.Resources>
+        <!-- Style TabControl-->
+        <Style TargetType="{x:Type TabControl}">
+            <Setter Property="Margin" Value="5,5,5,5" />
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <TabPanel IsItemsHost="True"/>
+                            </StackPanel>
+                            <Border Grid.Row="1" 
+                                BorderBrush="Green" 
+                                BorderThickness="1" 
+                                CornerRadius="0,5,5,5" 
+                                Margin="0,0,0,5" 
+                                Background="#FFDFECF7" 
+                                SnapsToDevicePixels="True">
+                                <!--Using ContentSource set to SelectedContent we will focus the content of the tabitem -->
+                                <ContentPresenter ContentSource="SelectedContent" HorizontalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!-- Grid -->
+    <Grid>
+        <TabControl Margin="5,5,5.333,4.667" Grid.RowSpan="4">
+            <!-- Onglet Stock-->
+            <TabItem Header="Stock">
+                <Grid x:Name="Stock" Width="1412" Margin="0,0,0,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="57*"/>
+                        <RowDefinition Height="57*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="Beige" Margin="0,5,0,278.667">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2.2*"/>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <!-- Groupe Reference -->
+                        <GroupBox x:Name="GroupeStockRef" Grid.Column="0"  HorizontalAlignment="Left" Margin="1,0,0,0"
+                                  VerticalAlignment="Top" Height="81" Width="289" Grid.RowSpan="3" />
+                        <!-- Reference C0R0 -->
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="BlStockReference" Height="25" 
+                                   TextWrapping="Wrap" Text="Référence" Margin="5,4,0,3.667" Width="64"/>
+                        <TextBox  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="BoStockReference" 
+                                  Height="25" TextWrapping="Wrap" Text="" Width="196" Margin="73,3,0,4.667"/>
+
+                        <!-- Désignation C0R1 -->
+                        <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                   x:Name="BlStockDesignation" TextWrapping="Wrap" Text="Designation" Margin="5,8.333,0,8.333" Width="64" Height="16"/>
+                        <TextBox Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                 x:Name="BoStockDesignation" Height="26" TextWrapping="Wrap" Text="" Width="196" Margin="73,3.333,0,3.333"/>
+
+                        <!-- Reapprovisionner C0R3 -->
+                        <CheckBox Grid.Column="0" Grid.Row="3" Margin="26,11,10,9.667"/>
+                        <TextBlock Grid.Column="0" Grid.Row="3"/>
+
+                        <!-- Groupe Usage -->
+                        <GroupBox x:Name="GroupeStockUsage" Grid.Column="1"  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top" Height="159" Width="342" Grid.RowSpan="4" />
+                        <!-- Famille C1R0 -->
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlStockFamille" TextWrapping="Wrap" Text="Famille" Margin="15.333,7,0,0.667" Width="64" Height="25"/>
+                        <ComboBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                     x:Name="CbStockFamille" Height="25" Width="196" Margin="83.333,7,0,0.667"/>
+                        <Button x:Name="BtStockFamilleAdd" Content="+" Grid.Column="1" HorizontalAlignment="Left" Margin="303,13,0,0" 
+                                VerticalAlignment="Top" Width="26" RenderTransformOrigin="-0.045,0.583"/>
+
+                        <!-- Fournisseur C1R1 -->
+                        <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlStockFournisseur" TextWrapping="Wrap" Text="Fournisseur" Margin="15.333,7.333,0,0.333" Width="64" Height="25"/>
+                        <ComboBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                     x:Name="CbStockFournisseur" Height="25" Width="196" Margin="83.333,7.333,0,0.333"/>
+                        <Button x:Name="BtStockFournisseurAdd" Content="+" Grid.Column="1" HorizontalAlignment="Left" Margin="303,16.333,0,0" 
+                                VerticalAlignment="Top" Width="26" RenderTransformOrigin="-0.045,0.583" Grid.Row="1"/>
+                        <!-- Rangement C1R2 -->
+                        <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlStockRangement" TextWrapping="Wrap" Text="Rangement" Margin="15.333,7.667,0,0.667" Width="64" Height="25"/>
+                        <ComboBox Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                     x:Name="CbStockRangement" Height="25"  Width="196" Margin="83.333,7.667,0,0.667"/>
+                        <Button x:Name="BtStockRangementAdd" Content="+" Grid.Column="1" HorizontalAlignment="Left" Margin="303,15.667,0,0"
+                                VerticalAlignment="Top" Width="26" RenderTransformOrigin="-0.045,0.583" Grid.Row="2"/>
+                        <!-- Date C1R3 -->
+                        <TextBlock Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlStockDate" TextWrapping="Wrap" Text="Date" Margin="15.333,7.333,0,0.333" Width="64" Height="25"/>
+                        <DatePicker Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                     x:Name="DpStockDate" Height="25"  Width="196" Margin="83.333,7.333,0,0.333"/>
+
+
+                        <!-- Groupe Rapport -->
+                        <GroupBox x:Name="GroupeStockRapport" Grid.Column="2"  HorizontalAlignment="Left" Margin="0.667,0,0,0"
+                                  VerticalAlignment="Top" Height="159" Width="175" Grid.RowSpan="5" />
+                        <!-- Famille C2R0 -->
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlStockUnite" TextWrapping="Wrap" Text="Unité" Margin="15.667,7,0,0.667" Width="64" Height="25"/>
+                        <ComboBox Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                     x:Name="CbStockUnite" Height="25" Width="72" Margin="83.667,7,0,0.667"/>
+
+                        <!-- Fournisseur C2R1 -->
+                        <TextBlock Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlStockPrixAchat" TextWrapping="Wrap" Text="Prix d'achat" Margin="15.667,7.333,0,0.333" Width="64" Height="25"/>
+                        <TextBox Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                     x:Name="CbStockPrixAchat" Height="25" Width="72" Margin="83.667,7.333,0,0.333"/>
+
+                        <!-- Rangement C2R2 -->
+                        <TextBlock Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlStockQuantite" TextWrapping="Wrap" Text="Quantite" Margin="15.667,7.667,0,0.667" Width="64" Height="25"/>
+                        <TextBox Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                     x:Name="CbStockQuantite" Height="25"  Width="72" Margin="83.667,7.667,0,0.667"/>
+                        <!-- Date C2R3 -->
+                        <TextBlock Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlStockMini" TextWrapping="Wrap" Text="Stock mini" Margin="15.667,7.333,0,0.333" Width="64" Height="25"/>
+                        <TextBox Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="CbStockMini" Height="25"  Width="72" Margin="83.667,7.333,0,0.333"/>
+
+                        <!-- Groupe Filtre -->
+                        <GroupBox x:Name="GroupeStockFiltre" Grid.Column="3"  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top" Height="159" Width="504" Grid.RowSpan="4" />
+
+                    </Grid>
+                    <ListView Background="AliceBlue" Margin="0,168,0,0" Grid.RowSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Designation" Width="150" DisplayMemberBinding="{Binding Age}" />
+                                <GridViewColumn Header="Quantité" Width="70" DisplayMemberBinding="{Binding Age}" />
+                                <GridViewColumn Header="Unité" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                                <GridViewColumn Header="Stock Mini" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                                <GridViewColumn Header="Prix d'achat" Width="120" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                                <GridViewColumn Header="Famille" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                                <GridViewColumn Header="Fournisseur" Width="120" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Rangement" Width="100" DisplayMemberBinding="{Binding Age}" />
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <!-- Onglet Commande-->
+            <TabItem Header="Commandes">
+                <Grid x:Name="Commandes" Width="1412" Margin="0,0,0,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="57*"/>
+                        <RowDefinition Height="57*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="Beige" Margin="0,5,0,278.667">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2.2*"/>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+
+                        </Grid.RowDefinitions>
+                        <!--Groupe Reference -->
+                        <GroupBox x:Name="GroupeCommandesRef" Grid.Column="0"  HorizontalAlignment="Left" Margin="1,0,0,-0.333"
+                                  VerticalAlignment="Top" Height="163" Width="289" Grid.RowSpan="4" />
+                        <!-- Identifiant C0R0 -->
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="BlCommandesIdentifiant" Height="25" 
+                                   TextWrapping="Wrap" Text="Identifiant" Margin="5,4,0,3.667" Width="64"/>
+                        <TextBox  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="BoCommandesIdentifiant" 
+                                  Height="25" TextWrapping="Wrap" Text="" Width="196" Margin="73,3,0,4.667"/>
+
+                        <!-- Désignation C0R1 -->
+                        <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                   x:Name="BlCommandesClient" TextWrapping="Wrap" Text="Client" Margin="5,8.333,0,8.333" Width="64" Height="16"/>
+                        <TextBox Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                 x:Name="BoCommandesClient" Height="26" TextWrapping="Wrap" Text="" Width="196" Margin="73,3.333,0,3.333"/>
+
+                        <!-- Date Commande C0R2 -->
+                        <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlCommandesDateCom" TextWrapping="Wrap" Text="Date Commande" Margin="5,4.667,0,4" Width="74" Height="32"/>
+                        <DatePicker Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                     x:Name="DpCommandesDateCom" Height="25"  Width="186" Margin="83,11.667,0,4"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       x:Name="BlCommandesDateCre" TextWrapping="Wrap" Text="Date Creation" Margin="5,12,0,3.667" Width="74" Height="25"/>
+                        <DatePicker Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                     x:Name="DpCommandesDateCre" Height="25"  Width="186" Margin="83,11.667,0,4"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <!-- Onglet Entrées-->
+            <TabItem Header="Entrées">
+
+            </TabItem>
+            <!-- Onglet Recettes-->
+            <TabItem Header="Recettes">
+                <Grid x:Name="Recettes" Width="1412" Margin="0,0,0,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="57*"/>
+                        <RowDefinition Height="57*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="Beige" Margin="0,5,0,278.667">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="299*"/>
+                            <ColumnDefinition Width="299*"/>
+                            <ColumnDefinition Width="183*"/>
+                            <ColumnDefinition Width="632*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <!-- Groupe Reference -->
+                        <GroupBox x:Name="GroupeRefRecette" Grid.Column="0"  HorizontalAlignment="Left" Margin="1,0,0,0"
+                                  VerticalAlignment="Top" Height="81" Width="289" Grid.RowSpan="3" />
+                        <!-- Reference C0R0 -->
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="BlRecetteReference" Height="25" 
+                                   TextWrapping="Wrap" Text="Référence" Margin="5,4,0,3.667" Width="64"/>
+                        <TextBox  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="BoReference" 
+                                  Height="25" TextWrapping="Wrap" Text="" Width="196" Margin="73,3,0,4.667"/>
+
+                        <!-- Désignation C0R1 -->
+                        <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                   x:Name="BlRecetteDesignation" TextWrapping="Wrap" Text="Designation" Margin="5,8.333,0,8.333" Width="64" Height="16"/>
+                        <TextBox Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                 x:Name="BoRecetteDesignation" Height="26" TextWrapping="Wrap" Text="" Width="196" Margin="73,3.333,0,3.333"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <!-- Onglet Rendements-->
+            <TabItem Header="Rendements">
+
+            </TabItem>
+            <!-- Onglet Impressions-->
+            <TabItem Header="Impressions">
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
